@@ -1,19 +1,21 @@
 name: runner
 on: 
-	push
+	push:
+		branches: [ "master" ]
 	schedule:
 		# 定时任务
     	- cron: '0 * * * *'
+  workflow_dispatch:
     	
-    permissions:
- 		contents: write
+permissions:
+	contents: write
 
 
 jobs:
-	bot:
-    	runs-on: ubuntu-latest
-    	steps:
-    	- uses: actions/checkout@v3
+	fetch:
+  	runs-on: ubuntu-latest
+  	steps:
+  	- uses: actions/checkout@v3
 		- name: Set up Python 3.10
 		  uses: actions/setup-python@v3
 		  with:
@@ -37,4 +39,4 @@ jobs:
 		  uses: ad-m/github-push-action@master
 		  with:
 		    github_token: ${{ secrets.GITHUB_TOKEN }}
-			
+		
