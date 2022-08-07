@@ -37,7 +37,7 @@ jobs:
         git config --global user.email 2533584225@qq.com
         git config --global user.name lijunjie2232
         git add .
-        git commit -m "scheduled update"
+        git commit -m "sub update"
         git pull --rebase
     - name: Push
       uses: ad-m/github-push-action@master
