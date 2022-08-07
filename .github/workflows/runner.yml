@@ -42,4 +42,8 @@ jobs:
     - name: Push
       uses: ad-m/github-push-action@master
       with:
+<<<<<<< HEAD
         github_token: ${{ secrets.GITHUB_TOKEN }}
+=======
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+>>>>>>> 80be1b13eb52d7647f6840c1ac55719f08d65644
