@@ -4,7 +4,8 @@
 import requests
 import re
 
-resp = requests.get("https://raw.githubusercontent.com/Pawdroid/Free-servers/main/README.md")
+#resp = requests.get("https://raw.githubusercontent.com/Pawdroid/Free-servers/main/README.md")
+resp = requests.get("https://raw.daycat.space/long")
 html = resp.text
 pattern = re.compile(r"<h5>本次节点订阅地址：(.*?)</h5>")
 result = pattern.findall(html)
