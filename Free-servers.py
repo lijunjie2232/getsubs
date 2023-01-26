@@ -19,16 +19,29 @@ def encode(subs:list):
 
 if __name__ == '__main__':
     try:
+        nodeList = set()
+
+        # get sub url
         resp = requests.get("https://raw.githubusercontent.com/FiFier/v2rayShare/main/README.md")
         text = resp.text
-
         pattern = re.compile(r"v2ray订阅链接[\s\S]*?(http.*?)\n")
         result = pattern.findall(text)
 
+        # get sub
         resp = requests.get(result[0])
         sub = resp.text
+
+        # node aggr
+        nodes = set(decode(sub))
+        nodes.remove('')
+        nodeList = nodeList.union(nodes)
+        len(nodeList)
+
+        # form sub
+        sub1 = encode(nodeList)
         with open("./Free-servers", "w") as f:
-            f.write(sub)
+            f.write(sub1)
             f.close()
+
     except Exception as e:
         print(e)
