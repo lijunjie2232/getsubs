@@ -14,7 +14,7 @@ def encode(subs:list):
         if str:
             str += '\n'
         str += i
-    return base64.b64encode(str.encode())
+    return base64.b64encode(str.encode()).decode('utf-8')
 
 
 if __name__ == '__main__':
