@@ -3,17 +3,33 @@
 
 import requests
 import re
+import base64
 
-# resp = requests.get("https://raw.githubusercontent.com/Pawdroid/Free-servers/main/README.md")
-resp = requests.get("https://raw.daycat.space/long")
-# html = resp.text
-# pattern = re.compile(r"<h5>本次节点订阅地址：(.*?)</h5>")
-# result = pattern.findall(html)
+def decode(sub:str):
+    return base64.b64decode(sub).decode('utf-8').split('\n')
 
-# resp = requests.get(result[0])
-sub = resp.text
+def encode(subs:list):
+    str = ""
+    for i in subs:
+        if str:
+            str += '\n'
+        str += i
+    return base64.b64encode(str.encode())
 
-f = open("./Free-servers", "w")
-f.write(sub)
-f.close()
 
+if __name__ == '__main__':
+    try:
+        resp = requests.get("https://raw.githubusercontent.com/FiFier/v2rayShare/main/README.md")
+        text = resp.text
+        print(resp.text)
+
+        pattern = re.compile(r"v2ray订阅链接[\s\S]*?(http.*?\n)")
+        result = pattern.findall(text)
+
+        resp = requests.get(result[0])
+        print(result[0])
+        with open("./Free-servers", "w") as f:
+            f.write(resp)
+            f.close()
+    except Exception as e:
+        print(e)
