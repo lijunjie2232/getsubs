@@ -39,7 +39,7 @@ if __name__ == '__main__':
 
         # form sub
         sub1 = str(encode(nodeList))
-        with open("./Free-servers.txt", "w") as f:
+        with open("./Free-servers", "w") as f:
             f.write(sub1)
             f.close()
 
