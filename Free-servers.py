@@ -22,7 +22,7 @@ if __name__ == '__main__':
         resp = requests.get("https://raw.githubusercontent.com/FiFier/v2rayShare/main/README.md")
         text = resp.text
 
-        pattern = re.compile(r"v2ray订阅链接[\s\S]*?(http.*?\n)")
+        pattern = re.compile(r"v2ray订阅链接[\s\S]*?(http.*?)\n")
         result = pattern.findall(text)
 
         resp = requests.get(result[0])
