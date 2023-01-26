@@ -21,13 +21,11 @@ if __name__ == '__main__':
     try:
         resp = requests.get("https://raw.githubusercontent.com/FiFier/v2rayShare/main/README.md")
         text = resp.text
-        print(resp.text)
 
         pattern = re.compile(r"v2ray订阅链接[\s\S]*?(http.*?\n)")
         result = pattern.findall(text)
 
         resp = requests.get(result[0])
-        print(result[0])
         with open("./Free-servers", "w") as f:
             f.write(resp)
             f.close()
