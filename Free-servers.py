@@ -26,8 +26,9 @@ if __name__ == '__main__':
         result = pattern.findall(text)
 
         resp = requests.get(result[0])
+        sub = resp.text
         with open("./Free-servers", "w") as f:
-            f.write(resp)
+            f.write(sub)
             f.close()
     except Exception as e:
         print(e)
