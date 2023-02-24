@@ -78,12 +78,14 @@ if __name__ == '__main__':
         nodes.remove('')
         nodeList = nodeList.union(nodes)
 
+        # get sub
         result = html_filter(
             "https://raw.githubusercontent.com/mksshare/mksshare.github.io/main/README.md", r"```[\s]*?([\s\S]*)[\s]*?```")[0]
         result = text_filter(result, r"\n(.*?)\n")
         nodes = set(result)
         nodes.remove('')
         nodeList = nodeList.union(nodes)
+        print(len(nodeList))
 
         # form sub and write into file
         nodes_sub = str(encode(nodeList))
